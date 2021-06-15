@@ -1,6 +1,4 @@
-package main
-
-func main() {}
+package pattern
 
 // return 文に比較演算子
 func retBool() bool {
