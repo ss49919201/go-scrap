@@ -1,6 +1,9 @@
 package pattern
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 // return 文に比較演算子
 func RetBool() bool {
@@ -20,5 +23,32 @@ func Switch(parm int) {
 	case 2, 3:
 		fmt.Println("false")
 	}
+}
 
+func CreateFile(name string) {
+	// ./ にファイルを作成
+	f, err := os.Create(name)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	fmt.Println(f.Name())
+
+	// 掃除
+	defer os.Remove(f.Name())
+}
+
+func CreateTempFile(name string) {
+	// 第1引数を空文字列にすることで 環境変数TMPDIR にファイルを作成
+	f, err := os.CreateTemp("", name)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	fmt.Println(f.Name())
+
+	// 掃除
+	defer os.Remove(f.Name())
 }
