@@ -7,6 +7,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 )
 
@@ -37,6 +38,33 @@ func UploadObject() {
 		Key:    aws.String(objectKey),
 		Body:   file,
 	})
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	log.Println(output)
+}
+
+func DownloadObject() {
+	// sessionの作成
+	sess := session.Must(session.NewSession(
+		&aws.Config{
+			Region: aws.String(os.Getenv("REGION")),
+		},
+	))
+
+	bucketName := os.Getenv("BUCKET_NAME")
+	// Keyはパスを示す
+	// {バケット名}/sample/sample.txt にしたいなら sample/sample.txt とする
+	objectKey := os.Getenv("OBJECT_KEY")
+
+	downloader := s3manager.NewDownloader(sess)
+	buf := aws.NewWriteAtBuffer([]byte{})
+	output, err := downloader.Download(buf,
+		&s3.GetObjectInput{
+			Bucket: aws.String(bucketName),
+			Key:    aws.String(objectKey),
+		})
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
