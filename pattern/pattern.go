@@ -52,3 +52,11 @@ func CreateTempFile(name string) {
 	// 掃除
 	defer os.Remove(f.Name())
 }
+
+func AppendSlice() {
+	// FIXME: capを確保する
+	l := []int{1, 2, 3, 4}
+	r := []int{1, 2, 3, 4}
+	l = append(l, r...)
+	fmt.Println(l)
+}
