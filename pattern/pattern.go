@@ -60,3 +60,9 @@ func AppendSlice() {
 	l = append(l, r...)
 	fmt.Println(l)
 }
+
+func TypeAssertion() {
+	var i interface{} = "hoge"
+	// interface{}型の値の、underlying な値を利用するためのもの
+	fmt.Println(i.(string))
+}
