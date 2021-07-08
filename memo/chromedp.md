@@ -1,0 +1,3 @@
+-  Puppeteer のように最終通信後500ms待つ(networkidle)実装がない
+-  Contributerによると既存のコードを組み合わせるとおそらくできる
+    - https://github.com/chromedp/chromedp/issues/431
