@@ -3,6 +3,7 @@ package pattern
 import (
 	"fmt"
 	"os"
+	"reflect"
 	"time"
 )
 
@@ -102,4 +103,21 @@ func ChanIo() {
 	defer close(c)
 	time.Sleep(time.Second)
 	fmt.Println(<-r)
+}
+
+// reflect
+
+func IsInt(v interface{}) bool {
+	rv := reflect.ValueOf(v)
+	return rv.Kind() == reflect.Int
+}
+
+func IsValid(v interface{}) bool {
+	rv := reflect.ValueOf(v)
+	return rv.IsValid()
+}
+
+func IsNil(v interface{}) bool {
+	rv := reflect.ValueOf(v)
+	return rv.IsNil()
 }
