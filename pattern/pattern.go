@@ -3,6 +3,7 @@ package pattern
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 // return 文に比較演算子
@@ -65,4 +66,40 @@ func TypeAssertion() {
 	var i interface{} = "hoge"
 	// interface{}型の値の、underlying な値を利用するためのもの
 	fmt.Println(i.(string))
+}
+
+type T struct {
+	i int
+}
+
+func NewT() *T {
+	return &T{
+		i: 1,
+	}
+}
+
+func (t *T) Set(int) {
+	t.i = 1
+}
+
+func (t *T) Get() int {
+	return t.i
+}
+
+// Channel
+
+type sendCh chan<- string
+
+type receiveCh <-chan string
+
+func ChanIo() {
+	c := make(chan string)
+	var s sendCh
+	var r receiveCh
+	s, r = c, c
+	//goroutineでないと fatal error: all goroutines are asleep - deadlock!
+	go func() { s <- "Send" }()
+	defer close(c)
+	time.Sleep(time.Second)
+	fmt.Println(<-r)
 }
