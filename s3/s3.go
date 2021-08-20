@@ -19,7 +19,6 @@ func UploadObject() {
 			Region: aws.String(os.Getenv("REGION")),
 		},
 	))
-
 	targetFilePath := "./sample.txt"
 	file, err := os.Open(targetFilePath)
 	if err != nil {

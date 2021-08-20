@@ -1,6 +1,4 @@
-# import
-
-# import宣言について
+# import宣言
 
 - package宣言の後にimport宣言を書ける
     - package宣言の前には書けない
