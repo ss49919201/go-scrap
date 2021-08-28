@@ -7,7 +7,6 @@ import (
 	"path/filepath"
 )
 
-// TODO: サブディレクトリの対応
 func ReadDir(dir string) {
 	// ディレクトリのオープン
 	f, err := os.Open(dir)
@@ -31,6 +30,13 @@ func ReadDir(dir string) {
 		// ファイルパスを出力
 		d := filepath.Join(dir, file.Name())
 		fmt.Println(d)
+
+		// サブディレクトリであれば再帰
+		if file.Type().IsDir() {
+			fmt.Println()
+			ReadDir(d)
+			continue
+		}
 
 		// ファイルをオープン
 		f, err := os.Open(d)
