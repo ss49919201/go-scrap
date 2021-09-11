@@ -2,9 +2,11 @@ package benchmark
 
 import (
 	"testing"
+
+	"github.com/thoas/go-funk"
 )
 
-// 配列から特定の要素を削除
+// スライスの特定の要素をインデックスの先頭に移動させる
 //
 // 要素がユニークであることが前提
 func BenchmarkA(b *testing.B) {
@@ -40,6 +42,15 @@ func BenchmarkD(b *testing.B) {
 		ss := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
 		s := "5"
 		D(ss, s)
+	}
+}
+
+func BenchmarkE(b *testing.B) {
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		ss := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
+		s := "5"
+		E(ss, s)
 	}
 }
 
@@ -83,4 +94,9 @@ func D(ss []string, s string) []string {
 		}
 	}
 	return ss
+}
+
+func E(ss []string, s string) []string {
+	ss = funk.SubtractString(ss, []string{s})
+	return append([]string{s}, ss...)
 }
