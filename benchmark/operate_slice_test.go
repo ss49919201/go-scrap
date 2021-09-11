@@ -4,6 +4,9 @@ import (
 	"testing"
 )
 
+// 配列から特定の要素を削除
+//
+// 要素がユニークであることが前提
 func BenchmarkA(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -40,7 +43,6 @@ func BenchmarkD(b *testing.B) {
 	}
 }
 
-// 要素がユニークであることが前提
 func A(ss []string, s string) []string {
 	r := make([]string, 0, len(ss)-1)
 	for i := range ss {
@@ -53,7 +55,6 @@ func A(ss []string, s string) []string {
 	return r
 }
 
-// 要素がユニークであることが前提
 func B(ss []string, s string) []string {
 	for i := range ss {
 		if ss[i] == s {
