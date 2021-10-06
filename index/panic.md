@@ -43,3 +43,32 @@ func main() {
 }
 
 ```
+
+```
+package main
+
+import (
+	"fmt"
+)
+
+// panic! np, defer panic np, deffer panic p, defer panic main の順でpanicが呼ばれる
+
+func np() {
+	defer panic("defer panic np") // 出力される
+	panic("panic! np")
+}
+
+func p() {
+	defer panic("defer panic p") // 出力される
+	np()
+	panic("panic! p")
+}
+
+func main() {
+	fmt.Println("start")
+	defer panic("defer panic main") // 出力される
+	p()
+	fmt.Println("end") // 出力されない
+}
+
+```
