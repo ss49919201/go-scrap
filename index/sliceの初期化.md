@@ -17,3 +17,13 @@
 	fmt.Println(reflect.DeepEqual(a, b)) // false
 	fmt.Println(reflect.DeepEqual(b, c)) // false
 ```
+
+```
+	a := []string{0: "hello", 1: "world"}
+	fmt.Println(len(a)) // 2
+	fmt.Println(a)      // [hello world]
+
+	b := []string{0: "hello", 2: "world"}
+	fmt.Println(len(b)) // 3
+	fmt.Println(b)      // [hello  world]
+```
