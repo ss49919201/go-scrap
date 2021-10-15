@@ -3,7 +3,7 @@ module github.com/go-tips
 go 1.16
 
 require (
-	github.com/aws/aws-sdk-go v1.41.3
+	github.com/aws/aws-sdk-go v1.41.4
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/stretchr/testify v1.7.0
 	github.com/thoas/go-funk v0.9.1
