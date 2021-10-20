@@ -1,3 +1,7 @@
 package main
 
-//go:generate go run ../generate
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, world")
+}

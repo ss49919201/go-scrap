@@ -1,8 +1,9 @@
 package main
 
 import (
-	"errors"
 	"os"
+
+	. "github.com/dave/jennifer/jen"
 )
 
 func main() {
@@ -13,5 +14,9 @@ func main() {
 }
 
 func run() error {
-	return errors.New("err")
+	f := NewFile("main")
+	f.Func().Id("main").Params().Block(
+		Qual("fmt", "Println").Call(Lit("Hello, world")),
+	)
+	return f.Save("main.go")
 }

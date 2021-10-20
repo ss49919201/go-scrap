@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/aws/aws-sdk-go v1.41.4
+	github.com/dave/jennifer v1.4.1
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/guregu/dynamo v1.11.0
 	github.com/stretchr/testify v1.7.0
