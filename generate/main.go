@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	. "github.com/dave/jennifer/jen"
+	"github.com/dave/jennifer/jen"
 )
 
 func main() {
@@ -14,9 +14,9 @@ func main() {
 }
 
 func run() error {
-	f := NewFile("main")
+	f := jen.NewFile("main")
 	f.Func().Id("main").Params().Block(
-		Qual("fmt", "Println").Call(Lit("Hello, world")),
+		jen.Qual("fmt", "Println").Call(jen.Lit("Hello, world")),
 	)
 	return f.Save("main.go")
 }
