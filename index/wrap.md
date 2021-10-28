@@ -25,3 +25,15 @@ pp.Println(wwe)
 //   },
 // }
 ```
+
+```go
+we := fmt.Errorf("%w", errors.New("error"))
+uwe := errors.Unwrap(we)
+uwe2 := errors.Unwrap(errors.New("unwrap"))
+pp.Println(uwe)
+pp.Println(uwe2)
+// 	&errors.errorString{
+//   s: "error",
+// }
+// nil
+```
