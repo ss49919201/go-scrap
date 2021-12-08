@@ -52,3 +52,20 @@ w2.Flush()
 //   |bob |kazu|ken
 //   |jon |roy
 ```
+
+いい感じにテーブル作る
+```go
+	tw := tabwriter.NewWriter(os.Stdout, 0, 8, 2, ' ', 0)
+	tw.Write([]byte("ID" + "\t"))
+	tw.Write([]byte("FIELD_1" + "\t"))
+	tw.Write([]byte("FIELD_2" + "\t"))
+	tw.Write([]byte("FIELD_3" + "\n"))
+	for _, v := range valset {
+		tw.Write([]byte(v.ID + "\t"))
+		tw.Write([]byte(strconv.Itoa(v.Count) + "\t"))
+		tw.Write([]byte(v.Title) + "\t"))
+		tw.Write([]byte(v.CreatedAt.Format(time.RFC3339) + "\n"))
+	}
+	tw.Flush()
+```
+
