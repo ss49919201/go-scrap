@@ -28,3 +28,25 @@ func run(iSlice ...interface{}) {
 	}
 }
 ```
+
+変換
+
+```
+func interfaceSlice(slice interface{}) []interface{} {
+	val := reflect.ValueOf(slice)
+
+	if val.Type().Kind() != reflect.Slice {
+		panic("not slice")
+	}
+
+	if val.IsNil() {
+		return nil
+	}
+
+	iSlice := make([]interface{}, val.Len())
+	for i := 0; i < val.Len(); i++ {
+		iSlice[i] = val.Index(i).Interface()
+	}
+	return iSlice
+}
+```
