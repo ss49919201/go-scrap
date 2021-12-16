@@ -3,7 +3,7 @@ module github.com/go-tips
 go 1.17
 
 require (
-	github.com/aws/aws-sdk-go v1.42.21
+	github.com/aws/aws-sdk-go v1.42.23
 	github.com/dave/jennifer v1.4.1
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/stretchr/testify v1.7.0
@@ -14,5 +14,5 @@ require (
 require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	golang.org/x/net v0.0.0-20211123203042-d83791d6bcd9 // indirect
+	golang.org/x/net v0.0.0-20211209124913-491a49abca63 // indirect
 )
