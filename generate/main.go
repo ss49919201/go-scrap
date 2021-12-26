@@ -1,5 +1,7 @@
 package main
 
+//go:generate go run main.go
+
 import (
 	"os"
 
@@ -18,5 +20,5 @@ func run() error {
 	f.Func().Id("main").Params().Block(
 		jen.Qual("fmt", "Println").Call(jen.Lit("Hello, world")),
 	)
-	return f.Save("main.go")
+	return f.Save("../generated/main.go")
 }

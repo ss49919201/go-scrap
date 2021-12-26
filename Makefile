@@ -1,3 +1,3 @@
 PHONY: gen
 gen:
-	@go generate ./generated
+	@go generate ./generate
