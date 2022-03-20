@@ -15,9 +15,9 @@ import (
 )
 
 var (
-	poolID       = "xxxxxxxxxxxxxxxxxxxxx"
-	clientID     = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
-	clientSecret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	poolID       = os.Getenv("COGNITO_POOL_ID")
+	clientID     = os.Getenv("COGNITO_CLIENT_ID")
+	clientSecret = os.Getenv("COGNITO_CLIENT_SECRET")
 )
 
 // https://dev.to/mcharytoniuk/using-aws-cognito-app-client-secret-hash-with-go-8ld
@@ -42,6 +42,12 @@ func CreateUser() {
 	newUserData.SetUserPoolId(poolID)
 	newUserData.SetUsername(*userName)
 	newUserData.SetTemporaryPassword(password)
+	newUserData.SetUserAttributes([]*cognitoidentityprovider.AttributeType{
+		{
+			Name:  aws.String("email"),
+			Value: userName,
+		},
+	})
 
 	_, err := cognitoClient.AdminCreateUser(newUserData)
 	if err != nil {
