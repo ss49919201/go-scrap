@@ -24,3 +24,5 @@ func concat(stringSlice []string) string {
 	}
 	return s
 }
+
+// gpl/ch01/ex04/dup2.go からやる
