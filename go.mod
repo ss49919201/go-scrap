@@ -12,7 +12,7 @@ require (
 
 require (
 	github.com/Code-Hex/dd v1.1.0
-	github.com/aws/aws-lambda-go v1.32.0
+	github.com/aws/aws-lambda-go v1.32.1
 	github.com/bxcodec/faker/v3 v3.8.0
 	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
 )
