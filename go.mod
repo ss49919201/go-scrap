@@ -14,6 +14,7 @@ require (
 	github.com/Code-Hex/dd v1.1.0
 	github.com/aws/aws-lambda-go v1.32.0
 	github.com/bxcodec/faker/v3 v3.8.0
+	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
 )
 
 require (
@@ -21,6 +22,5 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 )

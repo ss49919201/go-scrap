@@ -1,4 +1,4 @@
-package cognito
+package main
 
 import (
 	"crypto/hmac"
@@ -22,7 +22,7 @@ var (
 
 // https://dev.to/mcharytoniuk/using-aws-cognito-app-client-secret-hash-with-go-8ld
 // https://dev.classmethod.jp/articles/change-cognito-user-force_change_passwore-to-confirmed/
-func CreateUser() {
+func main() {
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
 	}))
