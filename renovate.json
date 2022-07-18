@@ -1,4 +1,5 @@
 {
+    "postUpdateOptions": ["gomodTidy"],
     "timezone": "Asia/Tokyo",
     "schedule": ["before 11am on Tuesday on the 1nd and 3rd day instance"]
 }
