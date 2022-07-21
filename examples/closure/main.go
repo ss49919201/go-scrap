@@ -8,33 +8,45 @@ import "fmt"
 // 引数以外の変数を実行時の状態ではなく、
 // 定義されたスコープで扱うことができる。
 
-type store struct {
-	k string
-	v any
+type userType string
+
+const (
+	teacher userType = "teacher"
+	student userType = "student"
+)
+
+type user struct {
+	typ userType
 }
 
-type set struct{}
-
-func (s *set) exec(store store, k string, v any) {}
-
-type del struct{}
-
-func (d *del) exec(store store, k string, v any) {}
-
-type cmd interface {
-	exec(s store, k string, v any)
+func (u *user) greet() {
+	if u.typ == teacher {
+		fmt.Println("Hello teacher!")
+	} else {
+		fmt.Println("Hello student!")
+	}
 }
 
-func storeCmd() func(c cmd, k string, v any) {
-	var s store
-	return func(c cmd, k string, v any) {
-		c.exec(s, k, v)
-		fmt.Println(s)
+func (u *user) greetFunc() func() {
+	var msg string
+	if u.typ == teacher {
+		msg = "Hello teacher!"
+	} else {
+		msg = "Hello student!"
+	}
+	return func() {
+		fmt.Println(msg)
 	}
 }
 
 func main() {
-	cmd1 := storeCmd()
-	cmd1(&set{}, "k", "v")
-	fmt.Println()
+	u := &user{teacher}
+	// 毎回typの評価が実行される
+	u.greet()
+	u.greet()
+
+	// typの評価は一度だけ実行される
+	f := u.greetFunc()
+	f()
+	f()
 }
