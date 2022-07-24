@@ -39,6 +39,14 @@ func (u *user) greetFunc() func() {
 	}
 }
 
+func counterFunc() func() int {
+	var n int
+	return func() int {
+		n++
+		return n
+	}
+}
+
 func main() {
 	u := &user{teacher}
 	// 毎回typの評価が実行される
@@ -49,4 +57,12 @@ func main() {
 	f := u.greetFunc()
 	f()
 	f()
+
+	cf := counterFunc()
+	fmt.Println(cf()) // 1
+	fmt.Println(cf()) // 2
+
+	cf2 := counterFunc()
+	fmt.Println(cf2()) // 1
+	fmt.Println(cf())  // 3
 }
