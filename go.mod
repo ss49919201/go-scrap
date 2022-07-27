@@ -14,15 +14,14 @@ require (
 	github.com/Code-Hex/dd v1.1.0
 	github.com/aws/aws-lambda-go v1.32.1
 	github.com/bxcodec/faker/v3 v3.8.0
+	github.com/samber/lo v1.26.0
+	github.com/samber/mo v1.0.1
 	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
 )
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	github.com/kr/pretty v0.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/samber/lo v1.26.0 // indirect
 	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
-	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 )
