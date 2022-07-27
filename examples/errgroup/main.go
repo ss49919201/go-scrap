@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/samber/lo"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -29,6 +30,18 @@ func main() {
 
 		searches := []Search{Web, Image, Video}
 		results := make([]Result, len(searches))
+		lo.Map(searches, func(search Search, _ int) Result {
+			var res Result
+			g.Go(func() error {
+				result, err := search(ctx, query)
+				if err != nil {
+					return err
+				}
+				res = result
+				return nil
+			})
+			return res
+		})
 		for i, search := range searches {
 			i, search := i, search // https://golang.org/doc/faq#closures_and_goroutines
 			g.Go(func() error {
