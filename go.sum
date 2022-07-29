@@ -21,6 +21,8 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e h1:fD57ERR4JtEqsWb
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/samber/do v1.2.0 h1:XoT3vNKCAjWfzbp1f25iSlJ55DxQjX3tdEDqcen6ByM=
+github.com/samber/do v1.2.0/go.mod h1:xwCO5lXRivdZzNXuCegYgF0IlRioumVq8mnF5JNNKOU=
 github.com/samber/lo v1.26.0 h1:2LDJG543ZDzhkZ1ZmesQA5iSsbSuQrY3QXz2sCT8Ym0=
 github.com/samber/lo v1.26.0/go.mod h1:it33p9UtPMS7z72fP4gw/EIfQB2eI8ke7GR2wc6+Rhg=
 github.com/samber/mo v1.0.1 h1:qkAJDXoPAtk8axM8ZFe3qShpaYrfSr9EZaNDk/a4nAo=
