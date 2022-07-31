@@ -90,5 +90,5 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println(*adminRespondToAuthChallengeOutput.AuthenticationResult.AccessToken)
+	fmt.Printf("jwt: %s", *adminRespondToAuthChallengeOutput.AuthenticationResult.AccessToken)
 }
