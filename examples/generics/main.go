@@ -33,6 +33,29 @@ func ContainsInt(slice []int, elm int) bool {
 	return false
 }
 
+// ジェネリクスでも実現できそう
+type Animal interface {
+	Dog | Cat
+}
+
+type Dog struct{}
+
+type Cat struct{}
+
+type AnimalCollection[T Animal] struct {
+	Animals []T
+}
+
+func NewAnimalCollection[T Animal](a T) AnimalCollection[T] {
+	return AnimalCollection[T]{
+		Animals: []T{},
+	}
+}
+
+func Append[T Animal](a AnimalCollection[T], a2 T) {
+	a.Animals = append(a.Animals, a2)
+}
+
 func main() {
 	strSlice := []string{"1", "2"}
 	strElm := "1"
@@ -46,4 +69,17 @@ func main() {
 	// generic
 	fmt.Println(Contains(intSlice, intElm))
 	fmt.Println(Contains(strSlice, strElm))
+
+	var a = AnimalCollection[Cat]{
+		Animals: []Cat{{}},
+	}
+
+	// var a = AnimalCollection{
+	// 	Animals: []Cat{{}},
+	// } コンパイルエラー
+
+	var _ = NewAnimalCollection(Cat{})
+
+	Append(a, Cat{})
+	// Append(a, Dog{}) コンパイルエラー
 }
