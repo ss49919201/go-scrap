@@ -1,5 +1,6 @@
 package main
 
+// http://objectclub.jp/community/memorial/homepage3.nifty.com/masarl/article/dp-ocp-2.html
 // 仕様変更時にコードの修正ではなく追加で対応することで、影響範囲を狭くする
 // 多態性を持たせる
 // 振る舞いを拡張する際には、修正は不要で追加のみ
