@@ -12,7 +12,7 @@ require (
 
 require (
 	github.com/Code-Hex/dd v1.1.0
-	github.com/aws/aws-lambda-go v1.32.1
+	github.com/aws/aws-lambda-go v1.34.1
 	github.com/bxcodec/faker/v3 v3.8.0
 	github.com/guregu/dynamo v1.15.1
 	github.com/samber/do v1.2.0
