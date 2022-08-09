@@ -18,7 +18,7 @@ require (
 	github.com/samber/do v1.2.0
 	github.com/samber/lo v1.26.0
 	github.com/samber/mo v1.0.1
-	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
+	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4
 )
 
 require (
