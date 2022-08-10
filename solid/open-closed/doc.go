@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+// 開放閉鎖原則のサンプルパッケージ
 
 // http://objectclub.jp/community/memorial/homepage3.nifty.com/masarl/article/dp-ocp-2.html
 // 仕様変更時にコードの修正ではなく追加で対応することで、影響範囲を狭くする
@@ -22,50 +22,3 @@ import "fmt"
 
 // 解決策として一つのデザインパターンがあるわけではない
 // 変更されやすい箇所に応じてデザインパターンを使い分ける
-
-// ----------------------------------------------------------------------
-
-type UserImpl1 struct{}
-
-func (u *UserImpl1) Find(id int) {
-	fmt.Println("UserImpl1.Find")
-}
-
-// 基本のリポジトリ
-type UserRepo interface {
-	Find(id int)
-}
-
-// 拡張リポジトリを実装する
-// open : 拡張したいメソッドを持つinterfaceを追加で定義することで、既存の機能を損なうことなく拡張可能
-// closed : 追加のみで対応できるので、基本のリポジトリの修正がいらない
-type UserRepoExt interface {
-	UserRepo
-	FindByName(name string)
-}
-
-type UserImpl2 struct {
-	UserImpl1
-}
-
-func (u *UserImpl2) Find(id int) {
-	fmt.Println("UserImpl2.Find")
-}
-
-func (u *UserImpl2) FindByName(name string) {}
-
-func phase1() {
-	var repo UserRepo = &UserImpl1{}
-	repo.Find(1)
-}
-
-func phase2() {
-	var repo UserRepoExt = &UserImpl2{}
-	repo.Find(1)
-	repo.FindByName("")
-}
-
-func main() {
-	phase1()
-	phase2()
-}
