@@ -45,3 +45,5 @@ func getWidget(db *dynamo.DB, id int, t time.Time) (*widget, error) {
 	}
 	return &result, nil
 }
+
+func dateRangeTosString(from, to time.Time) (string, string)
