@@ -17,7 +17,7 @@ require (
 	github.com/guregu/dynamo v1.16.0
 	github.com/joho/godotenv v1.4.0
 	github.com/samber/do v1.2.0
-	github.com/samber/lo v1.26.0
+	github.com/samber/lo v1.27.0
 	github.com/samber/mo v1.0.1
 	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
 )
