@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/aws/aws-sdk-go v1.44.63
-	github.com/dave/jennifer v1.4.1
+	github.com/dave/jennifer v1.5.1
 	github.com/stretchr/testify v1.8.0
 	github.com/thoas/go-funk v0.9.1
 	gopkg.in/yaml.v3 v3.0.1 // indirect
