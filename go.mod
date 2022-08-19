@@ -14,7 +14,9 @@ require (
 	github.com/Code-Hex/dd v1.1.0
 	github.com/aws/aws-lambda-go v1.34.1
 	github.com/bxcodec/faker/v3 v3.8.0
+	github.com/graph-gophers/dataloader/v7 v7.0.0
 	github.com/guregu/dynamo v1.16.0
+	github.com/hashicorp/golang-lru v0.5.4
 	github.com/joho/godotenv v1.4.0
 	github.com/samber/do v1.2.0
 	github.com/samber/lo v1.27.0
