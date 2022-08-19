@@ -28,6 +28,33 @@ func toIntList(s []string) []int {
 	return ns
 }
 
+func isPrime(n int) bool {
+	if n < 2 {
+		return false
+	}
+	if n == 2 {
+		return true
+	}
+	for i := 2; i*i < n; i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func isPrimeDash(n int) bool {
+	if n < 2 {
+		return false
+	}
+	for i := 2; i*i <= n; i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
 func main() {
 	N := scanText()
 	ss := strings.Split(N, " ")
