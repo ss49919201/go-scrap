@@ -8,24 +8,38 @@ import (
 	"strings"
 )
 
-var sc = bufio.NewScanner(os.Stdin)
+const BUFSIZE = 1000000
 
-func scanText() string {
-	sc.Scan()
-	return sc.Text()
+var rdr = bufio.NewReaderSize(os.Stdin, BUFSIZE)
+
+func readline() string {
+	buf := make([]byte, 0, 16)
+	for {
+		l, p, e := rdr.ReadLine()
+		if e != nil {
+			fmt.Println(e.Error())
+			panic(e)
+		}
+		buf = append(buf, l...)
+		if !p {
+			break
+		}
+	}
+	return string(buf)
+}
+
+func readIntSlice() []int {
+	slice := make([]int, 0)
+	lines := strings.Split(readline(), " ")
+	for _, v := range lines {
+		slice = append(slice, toInt(v))
+	}
+	return slice
 }
 
 func toInt(s string) int {
 	n, _ := strconv.Atoi(s)
 	return n
-}
-
-func toIntList(s []string) []int {
-	ns := make([]int, len(s))
-	for i, v := range s {
-		ns[i] = toInt(v)
-	}
-	return ns
 }
 
 func isPrime(n int) bool {
@@ -40,27 +54,4 @@ func isPrime(n int) bool {
 	return true
 }
 
-func main() {
-	N := scanText()
-	ss := strings.Split(N, " ")
-	h1 := toInt(ss[0])
-	_ = toInt(ss[1])
-	as := make([][]int, h1)
-	for i := 0; i < h1; i++ {
-		N := scanText()
-		ss := strings.Split(N, " ")
-		as[i] = toIntList(ss)
-	}
-
-	N2 := scanText()
-	ss2 := strings.Split(N2, " ")
-	h2 := toInt(ss2[0])
-	_ = toInt(ss2[1])
-	bs := make([][]int, h2)
-	for i := 0; i < h2; i++ {
-		N := scanText()
-		ss := strings.Split(N, " ")
-		bs[i] = toIntList(ss)
-	}
-	fmt.Println(as, bs)
-}
+func main() {}
