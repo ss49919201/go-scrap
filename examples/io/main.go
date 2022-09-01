@@ -7,6 +7,15 @@ import (
 )
 
 func main() {
+	read()
+}
+
+func read() {
+	buf := bytes.NewBuffer([]byte("hello!"))
+	b := make([]byte, 5)
+	buf.Read(b)
+	fmt.Println(buf.String()) // !
+	fmt.Println(string(b))    // hello
 }
 
 func write() {
