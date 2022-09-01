@@ -6,10 +6,9 @@ import (
 	"io"
 )
 
-func main() {
-	read()
-}
+func main() {}
 
+// 引数のbyte数だけバッファからコピーされる
 func read() {
 	buf := bytes.NewBuffer([]byte("hello!"))
 	b := make([]byte, 5)
@@ -18,6 +17,7 @@ func read() {
 	fmt.Println(string(b))    // hello
 }
 
+// 引数のbyteがバッファにコピーされる
 func write() {
 	buf := bytes.NewBuffer(nil)
 	buf.Write([]byte("hello"))
