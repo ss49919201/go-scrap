@@ -7,8 +7,12 @@ import (
 )
 
 func main() {
-	multiWrite()
-	teeRead()
+}
+
+func write() {
+	buf := bytes.NewBuffer(nil)
+	buf.Write([]byte("hello"))
+	fmt.Println(buf.String()) // hello
 }
 
 func teeRead() {
