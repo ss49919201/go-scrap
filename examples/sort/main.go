@@ -21,6 +21,8 @@ func quickSort[T constraints.Ordered](arr []T, lo, hi int) {
 		pivot := arr[hi]
 		pivotIndex := lo
 		for j := lo; j < hi; j++ {
+			// ピボットより小さいものは左に移動
+			// ピボットより大きいものは後で右端に移動できるようピボットが入る位置に置いておく
 			if arr[j] < pivot {
 				arr[pivotIndex], arr[j] = arr[j], arr[pivotIndex]
 				pivotIndex++
@@ -44,6 +46,8 @@ func quicksort[T constraints.Ordered](arr []T) {
 	pivot := arr[len(arr)-1]
 	pivotIndex := 0
 	for i := 0; i < len(arr)-1; i++ {
+		// ピボットより小さいものは左に移動
+		// ピボットより大きいものは後で右端に移動できるようピボットが入る位置に置いておく
 		if arr[i] < pivot {
 			arr[pivotIndex], arr[i] = arr[i], arr[pivotIndex]
 			pivotIndex++
