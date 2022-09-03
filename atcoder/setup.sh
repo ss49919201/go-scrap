@@ -6,7 +6,7 @@ QESTION_TYPES=(a b c d)
 
 # 1回目のイテレートで親ディレクトリもまとめて作る
 for Q in ${QESTION_TYPES[@]}; do
-    TERGET=${MAIN_DIR}/${Q}
-    mkdir -p ${TERGET}
-    cp template/main.go ${TERGET}/main.go
+    TARGET=${MAIN_DIR}/${Q}
+    mkdir -p ${TARGET}
+    cp template/main.go ${TARGET}/main.go
 done
