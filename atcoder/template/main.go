@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -43,23 +42,12 @@ func toInt(s string) int {
 	return n
 }
 
-var mem = make(map[int]int)
+type mem map[int]int
 
 func main() {
 	N := toInt(readline())
 	NS := readIntSlice()
+	m := new(mem)
 
-	mem[1] = 0
-	mem[2] = int(math.Abs(float64(NS[1]) - float64(NS[0])))
-
-	for i := 2; i < N; i++ {
-		// 1つずつ
-		a := math.Abs(float64(NS[i])-float64(NS[i-1])) + float64(mem[i])
-		// 1つとばし
-		b := math.Abs(float64(NS[i])-float64(NS[i-2])) + float64(mem[i-1])
-
-		mem[i+1] = int(math.Min(a, b))
-	}
-
-	fmt.Println(mem[N])
+	fmt.Println(N, NS, m)
 }
