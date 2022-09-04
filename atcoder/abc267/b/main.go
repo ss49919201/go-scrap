@@ -30,7 +30,7 @@ func readline() string {
 
 func readIntSlice() []int {
 	slice := make([]int, 0)
-	lines := strings.Split(readline(), " ")
+	lines := strings.Split(readline(), "")
 	for _, v := range lines {
 		slice = append(slice, toInt(v))
 	}
@@ -45,9 +45,203 @@ func toInt(s string) int {
 type mem map[int]int
 
 func main() {
-	N := toInt(readline())
-	NS := readIntSlice()
-	m := new(mem)
+	S := readIntSlice()
 
-	fmt.Println(N, NS, m)
+	// スプリットかどうか
+	// ピン1が倒れているかどうか
+	if S[0] == 0 {
+		if S[6] == 1 {
+			if S[1] == 1 || S[7] == 1 {
+				if S[3] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+			if S[4] == 1 {
+				if S[3] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[1] == 0 && S[7] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+			if S[2] == 1 || S[8] == 1 {
+				if S[3] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[1] == 0 && S[7] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+
+			if S[5] == 1 {
+				if S[3] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[1] == 0 && S[7] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[2] == 0 && S[8] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+
+			if S[9] == 1 {
+				if S[3] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[1] == 0 && S[7] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[2] == 0 && S[8] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[5] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+		}
+
+		if S[3] == 1 {
+			if S[4] == 1 {
+				if S[1] == 0 && S[7] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+			if S[2] == 1 || S[8] == 1 {
+				if S[1] == 0 && S[7] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+
+			if S[5] == 1 {
+				if S[1] == 0 && S[7] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[2] == 0 && S[8] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+
+			if S[9] == 1 {
+				if S[1] == 0 && S[7] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[2] == 0 && S[8] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[5] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+		}
+
+		if S[1] == 1 || S[7] == 1 {
+			if S[2] == 1 || S[8] == 1 {
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+
+			if S[5] == 1 {
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[2] == 0 && S[8] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+
+			if S[9] == 1 {
+				if S[4] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[2] == 0 && S[8] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[5] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+		}
+
+		if S[4] == 1 {
+			if S[5] == 1 {
+				if S[2] == 0 && S[8] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+
+			if S[9] == 1 {
+				if S[2] == 0 && S[8] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+				if S[5] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+		}
+
+		if S[2] == 1 || S[8] == 1 {
+			if S[9] == 1 {
+				if S[5] == 0 {
+					fmt.Println("Yes")
+					return
+				}
+			}
+		}
+	}
+
+	fmt.Println("No")
 }

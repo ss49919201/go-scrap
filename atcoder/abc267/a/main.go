@@ -45,9 +45,17 @@ func toInt(s string) int {
 type mem map[int]int
 
 func main() {
-	N := toInt(readline())
-	NS := readIntSlice()
-	m := new(mem)
-
-	fmt.Println(N, NS, m)
+	S := readline()
+	switch S {
+	case "Monday":
+		fmt.Println(5)
+	case "Tuesday":
+		fmt.Println(4)
+	case "Wednesday":
+		fmt.Println(3)
+	case "Thursday":
+		fmt.Println(2)
+	case "Friday":
+		fmt.Println(1)
+	}
 }
