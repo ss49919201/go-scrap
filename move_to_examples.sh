@@ -7,6 +7,6 @@ FILES=`ls ${DIR}`
 for FILE in ${FILES[@]}; do
     BASENAME=${FILE%.*}
     mkdir examples/${BASENAME}
-    cp pattern/${FILE} examples/${BASENAME}/main.go
-    rm pattern/${FILE}
+    cp ${DIR}/${FILE} examples/${BASENAME}/main.go
+    rm ${DIR}/${FILE}
 done
