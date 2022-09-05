@@ -20,3 +20,16 @@ services:
       AWS_REGION: "us-west-2"
       AWS_ACCESS_KEY_ID: local
       AWS_SECRET_ACCESS_KEY: local
+
+  redis:
+    image: redis:6.0-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - "redis:/data"
+
+# 名前付きボリューム
+volumes:
+  redis:
+    # local の FS に保存する
+    driver: local
