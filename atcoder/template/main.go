@@ -42,6 +42,14 @@ func toInt(s string) int {
 	return n
 }
 
+func mod(n1, n2 int) int {
+	res := (n1 + n2) % n2
+	if res < 0 {
+		res += n2
+	}
+	return res
+}
+
 type mem map[int]int
 
 func main() {
