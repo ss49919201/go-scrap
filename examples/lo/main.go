@@ -8,22 +8,14 @@ import (
 )
 
 func main() {
-	uselo()
+	reduce()
 }
 
-func useStandard() {
-	for i := 0; i < 10; i++ {
-		go func(i int) {
-			fmt.Println(i)
-		}(i)
-	}
-}
-
-func uselo() {
+func reduce() {
 	fmt.Println(
-		lo.Reduce([]int{1, 2, 3, 4, 5}, func(acc string, x, _ int) string {
+		lo.Reduce([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, func(acc string, x, _ int) string {
 			acc += strconv.Itoa(x)
 			return acc
-		}, ""),
+		}, "This is the accumulator: "),
 	)
 }
