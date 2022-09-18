@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -48,6 +49,10 @@ func mod(n1, n2 int) int {
 		res += n2
 	}
 	return res
+}
+
+func abs(n int) int {
+	return int(math.Abs(float64(n)))
 }
 
 type mem map[int]int
