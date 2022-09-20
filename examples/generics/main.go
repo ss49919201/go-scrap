@@ -52,7 +52,7 @@ func NewAnimalCollection[T Animal](a T) AnimalCollection[T] {
 	}
 }
 
-func Append[T Animal](a AnimalCollection[T], a2 T) {
+func (a *AnimalCollection[T]) Append(a2 T) {
 	a.Animals = append(a.Animals, a2)
 }
 
@@ -80,6 +80,6 @@ func main() {
 
 	var _ = NewAnimalCollection(Cat{})
 
-	Append(a, Cat{})
+	a.Append(Cat{})
 	// Append(a, Dog{}) コンパイルエラー
 }
