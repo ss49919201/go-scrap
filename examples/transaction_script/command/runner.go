@@ -1,5 +1,5 @@
 package command
 
-type TS[T any] interface {
+type Runner[T any] interface {
 	Run() (model T, err error)
 }

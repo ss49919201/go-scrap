@@ -6,7 +6,7 @@ type CreateUserTS struct {
 	name string
 }
 
-func NewCreateUserTS(name string) *CreateUserTS {
+func NewCreateUserTS(name string) Runner[*model.User] {
 	return &CreateUserTS{name}
 }
 

@@ -6,7 +6,7 @@ type FindUserByID struct {
 	id int
 }
 
-func NewFindUserByID(id int) *FindUserByID {
+func NewFindUserByID(id int) Runner[*model.User] {
 	return &FindUserByID{id}
 }
 

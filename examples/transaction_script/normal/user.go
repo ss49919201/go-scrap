@@ -15,6 +15,9 @@ func (u *UserTS) FindByID(id int) *model.User {
 	}
 }
 
-func (u *UserTS) Create(name string) error {
-	return nil
+func (u *UserTS) Create(name string) (*model.User, error) {
+	return &model.User{
+		ID:   1,
+		Name: name,
+	}, nil
 }
