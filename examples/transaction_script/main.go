@@ -9,9 +9,11 @@ import (
 )
 
 func main() {
+	// normal
 	fmt.Println(normal.NewUserTS().Create("bar"))
 	fmt.Println(normal.NewUserTS().FindByID(1))
 
+	// command
 	var runner command.Runner[*model.User]
 	runner = command.NewCreateUserTS("bar")
 	fmt.Println(runner.Run())
