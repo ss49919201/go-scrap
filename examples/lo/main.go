@@ -23,3 +23,7 @@ func reduce() {
 		),
 	)
 }
+
+func some()    {}
+func every()   {}
+func flatMap() {}
