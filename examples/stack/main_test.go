@@ -79,10 +79,10 @@ func TestStackFunc(t *testing.T) {
 		if s.sp != test2.want.sp {
 			t.Errorf("actual %v, want %v", s.sp, test2.want.sp)
 		}
-		// FIXME:
-		// if reflect.ValueOf(s.data[0]).Pointer() == reflect.ValueOf(test2.want.data[0]).Pointer() {
-		// 	t.Errorf("actual %v, want %v", s.data, test2.want.data)
-		// }
+		// 関数の等値比較はポインタ値で見るしかない
+		if reflect.ValueOf(s.data[0]).Pointer() != reflect.ValueOf(test2.want.data[0]).Pointer() {
+			t.Errorf("actual %v, want %v", reflect.ValueOf(s.data[0]).Pointer(), reflect.ValueOf(test2.want.data[0]).Pointer())
+		}
 	})
 
 	test3 := testTbl[fn]{
