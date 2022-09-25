@@ -80,6 +80,9 @@ func TestStackFunc(t *testing.T) {
 			t.Errorf("actual %v, want %v", s.sp, test2.want.sp)
 		}
 		// 関数の等値比較はポインタ値で見るしかない
+		// そもそも仕様として比較ができない。
+		// > Slice, map, and function values are not comparable.
+		// https://go.dev/ref/spec#Comparison_operators
 		if reflect.ValueOf(s.data[0]).Pointer() != reflect.ValueOf(test2.want.data[0]).Pointer() {
 			t.Errorf("actual %v, want %v", reflect.ValueOf(s.data[0]).Pointer(), reflect.ValueOf(test2.want.data[0]).Pointer())
 		}
