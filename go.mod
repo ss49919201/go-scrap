@@ -14,6 +14,8 @@ require (
 	github.com/Code-Hex/dd v1.1.0
 	github.com/aws/aws-lambda-go v1.34.1
 	github.com/bxcodec/faker/v3 v3.8.0
+	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
+	github.com/go-playground/validator/v10 v10.11.0
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/graph-gophers/dataloader/v7 v7.0.0
 	github.com/guregu/dynamo v1.16.0
@@ -27,15 +29,12 @@ require (
 )
 
 require (
-	github.com/SebastiaanKlippert/go-wkhtmltopdf v1.7.2 // indirect
 	github.com/cenkalti/backoff/v4 v4.1.2 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
-	github.com/go-ozzo/ozzo-validation/v4 v4.3.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
-	github.com/go-playground/validator/v10 v10.11.0 // indirect
 	github.com/gofrs/uuid v4.2.0+incompatible // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
