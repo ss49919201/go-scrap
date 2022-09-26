@@ -26,12 +26,12 @@ func main() {
 	var e *int
 
 	l, e = popBack(l)
-	fmt.Println(sliceValue(l), *e)
+	fmt.Println(sliceValue(l), *e) // [1 2] 3
 	*_3 = 5
-	fmt.Println(sliceValue(l), *e)
+	fmt.Println(sliceValue(l), *e) // [1 2] 5
 
 	l, e = popBack(l)
-	fmt.Println(sliceValue(l), *e)
+	fmt.Println(sliceValue(l), *e) // [1] 2
 	l, e = popBack(l)
-	fmt.Println(sliceValue(l), *e)
+	fmt.Println(sliceValue(l), *e) // [] 1
 }
