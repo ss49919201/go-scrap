@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-func popBack[T any](l []T) ([]T, T) {
-	e := l[len(l)-1]
-	l = l[:len(l)-1]
-	return l, e
+func popBack[T any](l *[]T) T {
+	e := (*l)[len(*l)-1]
+	*l = (*l)[:len(*l)-1]
+	return e
 }
 
 func ptr[T any](v T) *T {
@@ -25,13 +25,13 @@ func main() {
 	l := []*int{ptr(1), ptr(2), _3}
 	var e *int
 
-	l, e = popBack(l)
+	e = popBack(&l)
 	fmt.Println(sliceValue(l), *e) // [1 2] 3
 	*_3 = 5
 	fmt.Println(sliceValue(l), *e) // [1 2] 5
 
-	l, e = popBack(l)
+	e = popBack(&l)
 	fmt.Println(sliceValue(l), *e) // [1] 2
-	l, e = popBack(l)
+	e = popBack(&l)
 	fmt.Println(sliceValue(l), *e) // [] 1
 }
