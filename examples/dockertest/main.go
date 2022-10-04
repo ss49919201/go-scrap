@@ -56,6 +56,11 @@ func purgeRedis(pool *dockertest.Pool, resource *dockertest.Resource) {
 	pool.Purge(resource)
 }
 
+func execRedis(resource *dockertest.Resource, cmd ...string) error {
+	_, err := resource.Exec(cmd, dockertest.ExecOptions{})
+	return err
+}
+
 func newRedisClient(addr string) *redis.Client {
 	return redis.NewClient(&redis.Options{
 		Addr: addr,
