@@ -7,10 +7,13 @@ import (
 )
 
 func main() {
+	join()
 	walk()
+	glob()
 }
 
 func join() {
+	fmt.Println("---------- join ----------")
 	fmt.Println(filepath.Join("a/b", "../../../xyz"))
 }
 
@@ -21,6 +24,7 @@ func walk() {
 			return err
 		}
 
+		fmt.Println("---------- walk ----------")
 		fmt.Println(path, info.IsDir())
 		return nil
 	})
@@ -28,6 +32,16 @@ func walk() {
 	// examples/filepath/main.go false
 }
 
+// 引数のパターンにマッチしたファイル名を取得する
 func glob() {
-
+	files, err := filepath.Glob("./examples/filepath/*.go")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("---------- glob ----------")
+	for _, f := range files {
+		fmt.Println(f)
+	}
+	// examples/filepath/dummy.go
+	// examples/filepath/main.go
 }
