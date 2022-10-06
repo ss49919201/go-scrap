@@ -57,14 +57,39 @@ func abs(n int) int {
 
 type mem map[int]int
 
-var flag map[int]bool
+var flag = make(map[int]bool)
 var e = make(map[int][]int)
 var deque []int
 var stop bool
 
-func dfs() {}
+func dfs(cur, next int) {
+	// duque の末尾に cur を追加
+	if !stop {
+		deque = append(deque, cur)
+	}
 
-func popBack[T any](l *[]T) T {
+	// 目的地に到達したら終了
+	if cur == next {
+		stop = true
+	}
+
+	// 頂点到達フラグを更新
+	flag[cur] = true
+
+	// 現在地から行ける頂点を探索
+	// 既に到達済みの頂点は探索しない
+	for _, v := range e[cur] {
+		if !flag[v] {
+			dfs(v, next)
+		}
+	}
+
+	if !stop {
+		popBack(&deque)
+	}
+}
+
+func popBack(l *[]int) int {
 	e := (*l)[len(*l)-1]
 	*l = (*l)[:len(*l)-1]
 	return e
@@ -74,11 +99,18 @@ func main() {
 	l1 := readIntSlice()
 	N, X, Y := l1[0], l1[1], l1[2]
 
-	for i := 0; i < N; i++ {
+	for i := 0; i < N-1; i++ {
 		l := readIntSlice()
 		e[l[0]] = append(e[l[0]], l[1])
 		e[l[1]] = append(e[l[1]], l[0])
 	}
 
-	fmt.Println(N, X, Y)
+	dfs(X, Y)
+
+	for i, v := range deque {
+		fmt.Print(v)
+		if (i + 1) != len(deque) {
+			fmt.Print(" ")
+		}
+	}
 }
