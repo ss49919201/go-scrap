@@ -62,6 +62,13 @@ var e = make(map[int][]int)
 var deque []int
 var stop bool
 
+// https://atcoder.jp/contests/abc270/editorial/4878
+// > 1.duque の末尾に v を追加する。
+// 2.現在いる頂点 v について、flag[v]=True に変更する。
+// 3.v から移動できる頂点 w であってまだ訪ねていないもの、すなわち flag[w]=False であるようなものを選び、頂点 w に移動した後、 1.から再度行う。
+// 4.duque の末尾から要素を 1 つ削除する。（ここで、削除される要素は v 自身となる）
+// 5.3.においてそのような頂点が存在しない場合、現在いる頂点がスタートした頂点 X であるならば探索を終了する。 そうでない時、この頂点を始めて訪れる直前のマスに戻り、2.の作業を再開する。
+
 func dfs(cur, next int) {
 	// duque の末尾に cur を追加
 	if stop {
