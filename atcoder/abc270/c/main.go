@@ -64,13 +64,16 @@ var stop bool
 
 func dfs(cur, next int) {
 	// duque の末尾に cur を追加
-	if !stop {
+	if stop {
+		return
+	} else {
 		deque = append(deque, cur)
 	}
 
 	// 目的地に到達したら終了
 	if cur == next {
 		stop = true
+		return
 	}
 
 	// 頂点到達フラグを更新
@@ -84,7 +87,11 @@ func dfs(cur, next int) {
 		}
 	}
 
-	if !stop {
+	// 現在地から行ける頂点全てが訪問済み又は行き止まりの場合は
+	// 末尾の頂点を削除 (つまり、一つ前の頂点での探索に戻る)
+	if stop {
+		return
+	} else {
 		popBack(&deque)
 	}
 }
