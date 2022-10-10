@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type Memory interface {
 	MainMemory | SecondoryMemory
@@ -24,11 +27,17 @@ func preemptJob(current, target job) {
 }
 
 // ジョブの入出力動作を停止する
-func stopIO(j job)
+func stopIO(j job) {
+	fmt.Println("stopIO")
+}
 
-func moveToMemory[T Memory](j job, m T) {}
+func moveToMemory[T Memory](j job, m T) {
+	fmt.Println("moveToMemory")
+}
 
-func load(j job, m MainMemory) {}
+func load(j job, m MainMemory) {
+	fmt.Println("load")
+}
 
 // 時分割システムを実行する
 // 一つのジョブの一回の実行に対して一定時間割り当てる
@@ -52,4 +61,6 @@ func ExecTimeDivision(quantum time.Duration) func() {
 	return cancel
 }
 
-func switchJob() {}
+func switchJob() {
+	fmt.Println("switchJob")
+}
