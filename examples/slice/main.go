@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func popBack[T any](l *[]T) T {
 	e := (*l)[len(*l)-1]
@@ -34,4 +37,10 @@ func main() {
 	fmt.Println(sliceValue(l), *e) // [1] 2
 	e = popBack(&l)
 	fmt.Println(sliceValue(l), *e) // [] 1
+
+	a := []string{"apple", "banana", "orange"}
+	b := filterWithoutAllocating(a, func(v string) bool { return v == "banana" })
+	fmt.Println(a, b) // [banana banana orange] [banana]
+	filterInPlace(&a, func(v string) bool { return strings.Contains(v, "bana") })
+	fmt.Println(a, b) // [banana banana] [banana]
 }
