@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 var flag = make(map[int]bool)
 var e = make(map[int][]int)
 var deque []int
@@ -50,4 +52,32 @@ func popBack(l *[]int) int {
 	e := (*l)[len(*l)-1]
 	*l = (*l)[:len(*l)-1]
 	return e
+}
+
+// https://atcoder.jp/contests/abc270/tasks/abc270_c
+func main() {
+	X, Y := 2, 5
+
+	ls := [][]int{
+		{1, 2},
+		{1, 3},
+		{3, 4},
+		{3, 5},
+	}
+	for _, v := range ls {
+		e[v[0]] = append(e[v[0]], v[1])
+		e[v[1]] = append(e[v[1]], v[0])
+	}
+
+	dfs(X, Y)
+
+	for i, v := range deque {
+		fmt.Print(v)
+		if (i + 1) != len(deque) {
+			fmt.Print(" ")
+		}
+	}
+
+	// Output:
+	// 2 1 3 5
 }
