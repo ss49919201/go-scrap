@@ -48,9 +48,9 @@ type mem map[int]int
 func main() {
 	N := toInt(readline())
 	A := readIntSlice()
-	m := make(mem)
 	m2 := make(mem)
 
+	// Uniqにする
 	tmpM := make(mem)
 	uA := make([]int, 0)
 	for _, v := range A {
@@ -60,14 +60,19 @@ func main() {
 		}
 	}
 
+	// 降順にソート
 	sort.Sort(sort.Reverse(sort.IntSlice(uA)))
 
+	// uAの各要素において、その要素よりも大きい値を持つ要素数をメモ化
+	// ユニークかつ降順にソートされているので、index数が値となる
+	m := make(mem)
 	for i := 0; i < len(uA); i++ {
 		m[uA[i]] = i
 	}
 
-	for i := 0; i < N; i++ {
-		m2[m[A[i]]]++
+	// Aの各要素において、その要素よりも大きい値を持つ要素数の出現回数をメモ化
+	for _, v := range A {
+		m2[m[v]]++
 	}
 
 	for i := 1; i <= N; i++ {
