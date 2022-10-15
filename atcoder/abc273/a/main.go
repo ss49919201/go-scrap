@@ -55,18 +55,16 @@ func abs(n int) int {
 	return int(math.Abs(float64(n)))
 }
 
-func popBack[T any](l *[]T) T {
-	e := (*l)[len(*l)-1]
-	*l = (*l)[:len(*l)-1]
-	return e
-}
-
 type mem map[int]int
 
 func main() {
 	N := toInt(readline())
-	NS := readIntSlice()
-	m := new(mem)
+	fmt.Println(f(N))
+}
 
-	fmt.Println(N, NS, m)
+func f(k int) int {
+	if k == 0 {
+		return 1
+	}
+	return k * f(k-1)
 }
