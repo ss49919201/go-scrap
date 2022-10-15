@@ -3,8 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -43,30 +43,34 @@ func toInt(s string) int {
 	return n
 }
 
-func mod(n1, n2 int) int {
-	res := (n1 + n2) % n2
-	if res < 0 {
-		res += n2
-	}
-	return res
-}
-
-func abs(n int) int {
-	return int(math.Abs(float64(n)))
-}
-
-func popBack[T any](l *[]T) T {
-	e := (*l)[len(*l)-1]
-	*l = (*l)[:len(*l)-1]
-	return e
-}
-
 type mem map[int]int
 
 func main() {
 	N := toInt(readline())
-	NS := readIntSlice()
-	m := new(mem)
+	A := readIntSlice()
+	m := make(mem)
+	m2 := make(mem)
 
-	fmt.Println(N, NS, m)
+	tmpM := make(mem)
+	uA := make([]int, 0)
+	for _, v := range A {
+		if _, ok := tmpM[v]; !ok {
+			uA = append(uA, v)
+			tmpM[v] = 1
+		}
+	}
+
+	sort.Sort(sort.Reverse(sort.IntSlice(uA)))
+
+	for i := 0; i < len(uA); i++ {
+		m[uA[i]] = i
+	}
+
+	for i := 0; i < N; i++ {
+		m2[m[A[i]]]++
+	}
+
+	for i := 1; i <= N; i++ {
+		fmt.Println(m2[i-1])
+	}
 }
