@@ -2,36 +2,44 @@ package main
 
 import "fmt"
 
-type Pen interface {
-	Write()
+// interfaceAを満たしていないclassAを、interfaceが求められているケースで使用する際に、
+// classAを改修せずに、interfaceAを満たすように実装したclassBを作成する。
+// このclassBをAdapterと呼ぶ。
+// classBにはclassAを委譲する。(継承するパターンもあるがGoではできない)
+// 要はラッパークラスのようなもの。
+
+type Cache struct{}
+
+func (c *Cache) Set(v any) {
+	fmt.Println("Set", v)
 }
 
-func Write(p Pen) {
-	p.Write()
+func (c *Cache) Get() {
+	fmt.Println("Get")
 }
 
-type NewPen struct{}
-
-func (n *NewPen) Write() {
-	fmt.Println("New Pen")
+type Loader interface {
+	Load()
+	Store(v any)
 }
 
-type OldPen struct{}
-
-func (o *OldPen) OldWrite() {
-	fmt.Println("Old Pen")
+// Loader を満たすように実装したCacheAdapter
+type CacheAdapter struct {
+	*Cache
 }
 
-type PenAdapter struct {
-	*OldPen
+func (c *CacheAdapter) Load() {
+	c.Cache.Get()
 }
 
-func (p *PenAdapter) Write() {
-	p.OldWrite()
+func (c *CacheAdapter) Store(v any) {
+	c.Cache.Set(v)
 }
 
 func main() {
-	Write(&NewPen{}) // New Pen
-	// Write(&OldPen{}) // Compile error
-	Write(&PenAdapter{}) // Old Pen
+	var loader Loader
+	// loader = &Cache{} // これはコンパイルエラーになる
+	loader = &CacheAdapter{&Cache{}} // 今回のケースだとCacheはnilでも問題ないが、一応&Cache{}を渡している
+	loader.Load()                    // Get
+	loader.Store("hoge")             // Set hoge
 }
