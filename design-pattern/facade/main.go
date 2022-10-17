@@ -6,15 +6,24 @@ import "fmt"
 
 type NotificationEmail struct{}
 
+func (n *NotificationEmail) Send(userID string) {
+	new(EmailClient).
+		Send(
+			getUser(userID).Email,
+		)
+}
+
+type email string
+
 type User struct {
 	ID    string
-	Email string
+	Email email
 }
 
 type EmailClient struct{}
 
-func (e *EmailClient) Send(email string) {
-	fmt.Println("Send email to", email)
+func (e *EmailClient) Send(v email) {
+	fmt.Println("Send email to", v)
 }
 
 func getUser(id string) *User {
@@ -22,8 +31,4 @@ func getUser(id string) *User {
 		ID:    id,
 		Email: "test@example.com",
 	}
-}
-
-func (n *NotificationEmail) Send(userID string) {
-	(&EmailClient{}).Send(getUser(userID).Email)
 }
