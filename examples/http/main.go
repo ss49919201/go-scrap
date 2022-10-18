@@ -1,10 +1,11 @@
-package httpserver
+package main
 
 import (
 	"encoding/json"
 	"fmt"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"os"
 )
@@ -17,8 +18,14 @@ var (
 
 func setenv() {
 	hostname = os.Getenv("HOSTNAME")
+	if hostname == "" {
+		hostname = "127.0.0.1"
+	}
 	port = os.Getenv("PORT")
-	address = fmt.Sprintf("%s:%s", hostname, port)
+	if port == "" {
+		port = "12345"
+	}
+	address = net.JoinHostPort(hostname, port)
 }
 
 func corsMiddleware(f http.HandlerFunc) http.HandlerFunc {
@@ -92,6 +99,10 @@ func Start() {
 	)
 
 	// Only localhost
-	fmt.Printf("listen server address: %s", address)
+	fmt.Printf("listen server address: %s\n", address)
 	log.Fatal(http.ListenAndServe(address, nil))
+}
+
+func main() {
+	Start()
 }
