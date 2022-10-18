@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -8,6 +9,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"os/signal"
 )
 
 var (
@@ -50,8 +52,10 @@ func loggerMiddleware(f http.HandlerFunc) http.HandlerFunc {
 func Start() {
 	setenv()
 
+	srvMux := http.NewServeMux()
+
 	// example
-	http.HandleFunc(
+	srvMux.HandleFunc(
 		"/example",
 		loggerMiddleware(
 			corsMiddleware(
@@ -77,7 +81,7 @@ func Start() {
 	)
 
 	// ping
-	http.HandleFunc(
+	srvMux.HandleFunc(
 		"/ping",
 		loggerMiddleware(
 			func(w http.ResponseWriter, r *http.Request) {
@@ -91,16 +95,40 @@ func Start() {
 	)
 
 	// hello
-	http.HandleFunc(
+	srvMux.HandleFunc(
 		"/hello",
 		func(w http.ResponseWriter, r *http.Request) {
 			io.WriteString(w, fmt.Sprintf("Hello! %s.", r.UserAgent()))
 		},
 	)
 
-	// Only localhost
+	srv := &http.Server{
+		Addr:    address,
+		Handler: srvMux,
+	}
+
+	idleConnsClosed := make(chan struct{})
+	go func() {
+		sigint := make(chan os.Signal, 1)
+		signal.Notify(sigint, os.Interrupt)
+		<-sigint
+
+		// We received an interrupt signal, shut down.
+		if err := srv.Shutdown(context.Background()); err != nil {
+			// Error from closing listeners, or context timeout:
+			log.Printf("HTTP server Shutdown: %v", err)
+		}
+		close(idleConnsClosed)
+	}()
+
 	fmt.Printf("listen server address: %s\n", address)
-	log.Fatal(http.ListenAndServe(address, nil))
+	if err := srv.ListenAndServe(); err != http.ErrServerClosed {
+		// Error starting or closing listener:
+		log.Fatalf("HTTP server ListenAndServe: %v", err)
+	}
+
+	<-idleConnsClosed
+	fmt.Println("Server closed.")
 }
 
 func main() {
