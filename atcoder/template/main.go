@@ -55,7 +55,7 @@ func abs(n int) int {
 	return int(math.Abs(float64(n)))
 }
 
-func popBack[T any](l *[]T) T {
+func popBack(l *[]any) any {
 	e := (*l)[len(*l)-1]
 	*l = (*l)[:len(*l)-1]
 	return e
