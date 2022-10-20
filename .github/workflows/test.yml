@@ -5,16 +5,17 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  build:
+  test:
+    name: runner/test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v3
 
-      - name: Setup Go
+      - name: setup Go
         uses: actions/setup-go@v2
         with:
           go-version: 1.18
 
-      - name: Test
+      - name: run test
         run: go test -v ./...
