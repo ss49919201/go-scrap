@@ -50,24 +50,32 @@ func getUser(id int) mo.Result[*user] {
 
 func insertUser(u *user) mo.Result[*user] {
 	if u.id == 1 {
-		return mo.Ok(&user{})
+		return mo.Ok(u)
 	} else {
 		return mo.Err[*user](errors.New("user not found"))
 	}
 }
 
-func validateUserFn() (func(*user) (*user, error), func(err error) (*user, error)) {
-	return func(u *user) (*user, error) { return u, nil },
-		func(err error) (*user, error) { return nil, err }
+func validateUser(u *user) mo.Result[*user] {
+	return mo.Ok(u)
 }
 
-func createUserFn() (func(*user) (*user, error), func(err error) (*user, error)) {
-	return func(u *user) (*user, error) { return u, nil },
-		func(err error) (*user, error) { return nil, err }
+func createUser(u *user) mo.Result[*user] {
+	return mo.Ok(u)
 }
 
 func main() {
-	r := getUser(1)
-	r.Match(validateUserFn()).Match(createUserFn())
-	insertUser(r.MustGet())
+	result1 := getUser(1).FlatMap(validateUser).FlatMap(createUser).FlatMap(insertUser)
+	if result1.IsError() {
+		fmt.Println(result1.Error())
+	} else {
+		fmt.Println(result1.MustGet())
+	}
+
+	result2 := getUser(2).FlatMap(validateUser).FlatMap(createUser).FlatMap(insertUser)
+	if result2.IsError() {
+		fmt.Println(result2.Error())
+	} else {
+		fmt.Println(result2.MustGet())
+	}
 }
