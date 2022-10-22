@@ -3,7 +3,7 @@ version: "3"
 services:
   # TODO: キャッシュする
   lint:
-    image: golangci/golangci-lint:v1.49.0-alpine
+    image: golangci/golangci-lint:v1.50.1-alpine
     volumes:
       - .:/app:ro
     working_dir: /app
