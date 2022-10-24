@@ -1,9 +1,16 @@
 # コマンドと同名のファイルがあった時に困らないように`.PHONY`を使ってコマンド名をダミーターゲットとして定義しておく
 # 変数の値が追いづらくなるので再帰変数展開`=`や上乗せ`+=`は使わない
+# 引数->変数->環境変数の優先順序であることに注意
+
+# `?=`は変数が未定義の時だけ値を代入する
+# つまり未定義時は`:=`と同等である
+
 # 既に環境変数として定義されている場合は、そちらを優先したいので`?=`を使う
-# `GENERATE_PATH := ./generate` だと `GENERATE_PATH=hoge make gen` が `go generate ./generate` になる
-# `GENERATE_PATH ?= ./generate` だと `go generate hoge` になる
-# 引数->変数->環境変数の優先順序
+# e.g
+# `GENERATE_PATH := ./generate` だと `GENERATE_PATH=hoge make gen` -> `go generate ./generate`
+# `GENERATE_PATH ?= ./generate` だと `GENERATE_PATH=hoge make gen` -> `go generate hoge` になる
+
+# ref: https://nekonenene.hatenablog.com/entry/make-define-variables
 
 GENERATE_PATH ?= ./generate
 GO_SRC_PATH := ./
