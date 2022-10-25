@@ -87,30 +87,36 @@ func dateRangeTosString(from, to time.Time) (string, string) {
 
 func main() {
 	sess := session.Must(session.NewSession())
-	db := dynamo.New(sess, &aws.Config{Region: aws.String("us-west-2")})
+	db := dynamo.New(sess, &aws.Config{
+		Region:   aws.String("us-west-2"),
+		LogLevel: aws.LogLevel(aws.LogDebugWithHTTPBody),
+		Logger: aws.LoggerFunc(func(args ...interface{}) {
+			fmt.Println(args...)
+		}),
+	})
 
 	if err := createTable(db, "Widgets"); err != nil {
 		panic(err)
 	}
 
-	// if err := putWidget(db, 1, &Widget{
-	// 	UserID: 1,
-	// 	Time:   time.Now(),
-	// 	Msg:    "Hello",
-	// 	Count:  1,
-	// 	Children: []Widget{
-	// 		{Msg: "World"},
-	// 	},
-	// 	Friends: []string{"Alice", "Bob"},
-	// 	Set: map[string]struct{}{
-	// 		"foo": {},
-	// 		"bar": {},
-	// 	},
-	// }); err != nil {
-	// 	panic(err)
-	// }
+	if err := putWidget(db, 1, &Widget{
+		UserID: 1,
+		Time:   time.Now(),
+		Msg:    "Hello",
+		Count:  1,
+		Children: []Widget{
+			{Msg: "World"},
+		},
+		Friends: []string{"Alice", "Bob"},
+		Set: map[string]struct{}{
+			"foo": {},
+			"bar": {},
+		},
+	}); err != nil {
+		panic(err)
+	}
 
-	count, err := countWidget(db, 1, time.Now().AddDate(0, -1, 0), time.Now().AddDate(0, 1, 0), false)
+	count, err := countWidget(db, 1, time.Now().AddDate(0, -1, 0), time.Now().AddDate(0, 1, 0), true)
 	if err != nil {
 		panic(err)
 	}
