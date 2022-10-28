@@ -30,6 +30,7 @@ require (
 	github.com/samber/mo v1.5.1
 	golang.org/x/exp v0.0.0-20220827204233-334a2380cb91
 	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4
+	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2
 )
 
