@@ -19,6 +19,14 @@ func main() {
 	e.GET("/health", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, "OK")
 	})
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Response().Header().Set("X-Version", "0.0.1")
+			c.Response().WriteHeader(http.StatusOK)
+			err := next(c)
+			return err
+		}
+	})
 
 	go func() {
 		if err := e.Start(net.JoinHostPort("localhost", "20000")); err != nil && err != http.ErrServerClosed {
