@@ -12,6 +12,7 @@ require (
 
 require (
 	github.com/Code-Hex/dd v1.1.0
+	github.com/ahmetb/go-linq/v3 v3.2.0
 	github.com/aws/aws-lambda-go v1.34.1
 	github.com/bxcodec/faker/v3 v3.8.0
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
