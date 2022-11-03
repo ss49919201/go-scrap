@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/go-tips/examples/linq/generic/internal"
+	"github.com/go-tips/examples/linq_generic/internal"
 )
 
 func main() {

@@ -8,13 +8,14 @@ func From[T any](elms []T) Query[T] {
 	return Query[T]{
 		Iterate: func() func() (T, bool) {
 			index := 0
-			return func() (T, bool) {
+			fn := func() (T, bool) {
 				if index >= len(elms) {
 					return empty[T](), false
 				}
 				defer func() { index++ }()
 				return elms[index], true
 			}
+			return fn
 		},
 	}
 }
@@ -23,7 +24,7 @@ func (q Query[T]) Where(predicate func(T) bool) Query[T] {
 	return Query[T]{
 		Iterate: func() func() (T, bool) {
 			next := q.Iterate()
-			return func() (T, bool) {
+			fn := func() (T, bool) {
 				for {
 					elm, ok := next()
 					if !ok {
@@ -35,6 +36,7 @@ func (q Query[T]) Where(predicate func(T) bool) Query[T] {
 					}
 				}
 			}
+			return fn
 		},
 	}
 }

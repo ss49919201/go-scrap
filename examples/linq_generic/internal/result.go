@@ -5,11 +5,11 @@ func (q Query[T]) ToSlice() []T {
 	next := q.Iterate()
 	for {
 		elm, ok := next()
-		if ok {
-			slice = append(slice, elm)
-		} else {
+		if !ok {
 			break
 		}
+
+		slice = append(slice, elm)
 	}
 	return slice
 }
