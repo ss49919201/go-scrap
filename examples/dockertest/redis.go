@@ -24,7 +24,9 @@ func runWithRedis(fn func()) {
 
 	// リクエストを捌く準備ができるまで待つ
 	if err = pool.Retry(func() error {
-		return newRedisClient(resource.GetHostPort("6379/tcp")).Ping(context.Background()).Err()
+		return newRedisClient(resource.GetHostPort("6379/tcp")).
+			Ping(context.Background()).
+			Err()
 	}); err != nil {
 		panic(err)
 	}
