@@ -56,6 +56,13 @@ func (a *AnimalCollection[T]) Append(a2 T) {
 	a.Animals = append(a.Animals, a2)
 }
 
+func equal[T comparable](x, y *T) bool {
+	if x == nil || y == nil {
+		return x == y
+	}
+	return *x == *y
+}
+
 func main() {
 	strSlice := []string{"1", "2"}
 	strElm := "1"
