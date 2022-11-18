@@ -107,7 +107,7 @@ func Start() {
 		Handler: srvMux,
 	}
 
-	idleConnsClosed := make(chan struct{})
+	idleConnsClosed := make(chan struct{}, 1)
 	go func() {
 		sigint := make(chan os.Signal, 1)
 		signal.Notify(sigint, os.Interrupt)
@@ -131,6 +131,16 @@ func Start() {
 	fmt.Println("Server closed.")
 }
 
+func Request() {
+	http.Get("http://localhost:12345/example")
+}
+
 func main() {
-	Start()
+	if os.Args[1] == "server" {
+		Start()
+	} else if os.Args[1] == "client" {
+		Request()
+	} else {
+		fmt.Println("invalid argument")
+	}
 }
