@@ -51,6 +51,7 @@ func main() {
 		panic(err)
 	}
 
+	fmt.Println("------1-------")
 	rv := reflect.ValueOf(dst)
 	for i := 0; i < rv.NumField(); i++ {
 		v := rv.Field(i)
@@ -60,9 +61,61 @@ func main() {
 			fmt.Println(v)
 		}
 	}
+	fmt.Println("------1-------")
+
+	if err := copier.Copy(&dst, &src); err != nil {
+		panic(err)
+	}
+	fmt.Println("------2-------")
+	fmt.Println(reflect.DeepEqual(dst.DS, src.DS))
+	fmt.Println(reflect.DeepEqual(dst.S, src.S))
+	fmt.Println(reflect.DeepEqual(dst.PS, src.PS))
+	fmt.Println(reflect.DeepEqual(dst.Time, src.Time))
+	fmt.Println(dst.PS == src.PS)
+	fmt.Println("------2-------")
+
+	s := []int{1}
+	var s2 []int
+	if err := copier.Copy(&s2, &s); err != nil {
+		panic(err)
+	}
+	fmt.Println("------3-------")
+	fmt.Println(s2)
+	fmt.Println(s[0] == s2[0])
+	fmt.Println("------3-------")
+
+	one := 1
+	s3 := []*int{&one}
+	var s4 []*int
+	if err := copier.Copy(&s4, &s3); err != nil {
+		panic(err)
+	}
+	fmt.Println("------4-------")
+	fmt.Println(s3)
+	fmt.Println(s3[0] == s4[0])
+	fmt.Println(reflect.DeepEqual(s3[0], s4[0]))
+	fmt.Println("------4-------")
 	// Output:
+	// ------1-------
 	// ds
 	// convert
 	// convert
 	// 2019-01-01 00:00:00 +0000 UTC
+	// ------1-------
+	// ------2-------
+	// true
+	// true
+	// true
+	// false
+	// true
+	// ------2-------
+	// ------3-------
+	// [1]
+	// true
+	// ------3-------
+	// ------4-------
+	// [0xc0000ac218]
+	// false
+	// true
+	// ------4-------
 }
