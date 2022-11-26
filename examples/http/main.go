@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -132,7 +133,15 @@ func Start() {
 }
 
 func Request() {
-	http.Get("http://localhost:12345/example")
+	resp, err := http.Get("http://localhost:12345/example")
+	if err != nil {
+		panic(err)
+	}
+	b, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(b))
 }
 
 func main() {
