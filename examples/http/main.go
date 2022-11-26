@@ -136,9 +136,9 @@ func Request() {
 }
 
 func main() {
-	if os.Args[1] == "server" {
+	if os.Args[1] == "1" {
 		Start()
-	} else if os.Args[1] == "client" {
+	} else if os.Args[1] == "2" {
 		Request()
 	} else {
 		fmt.Println("invalid argument")
