@@ -23,7 +23,7 @@ require (
 	github.com/google/go-cmp v0.5.8
 	github.com/graph-gophers/dataloader/v7 v7.0.0
 	github.com/guregu/dynamo v1.16.0
-	github.com/hashicorp/golang-lru v0.5.4
+	github.com/hashicorp/golang-lru v1.0.1
 	github.com/jinzhu/copier v0.3.5
 	github.com/joho/godotenv v1.4.0
 	github.com/k0kubun/pp v3.0.1+incompatible
