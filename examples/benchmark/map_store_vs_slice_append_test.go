@@ -1,21 +1,39 @@
 package benchmark
 
-import "testing"
+import (
+	"math"
+	"testing"
+)
 
-// 0.2201 ns/op
+var n = int(math.Pow10(6))
+
+// 0.2221 ns/op
 func BenchmarkMapStore(b *testing.B) {
 	b.ResetTimer()
 	m := make(map[int]int)
-	for i := 0; i < 1000000; i++ {
+	for i := 0; i < n; i++ {
 		m[i] = i
 	}
 }
 
-// 0.01251 ns/op
+// 0.01210 ns/op
 func BenchmarkSliceAppend(b *testing.B) {
 	b.ResetTimer()
 	s := []int{}
-	for i := 0; i < 1000000; i++ {
+	for i := 0; i < n; i++ {
 		s = append(s, i)
+	}
+}
+
+// 0.001994 ns/op
+func BenchmarkSliceBeforeInit(b *testing.B) {
+	b.ResetTimer()
+	s := make([]int, n)
+	for i := 0; i < n; i++ {
+		s[i] = -1
+	}
+
+	for i := 0; i < n; i++ {
+		s[i] = i
 	}
 }
