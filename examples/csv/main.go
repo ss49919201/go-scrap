@@ -24,10 +24,7 @@ func writeCSV(w io.Writer, records [][]string) error {
 	cw := csv.NewWriter(w)
 
 	// 内部でFlushが呼ばれる
-	if err := cw.WriteAll(records); err != nil {
-		return err
-	}
-	return nil
+	return cw.WriteAll(records)
 }
 
 func compressGzip(w io.Writer, payload []byte) error {
@@ -37,12 +34,7 @@ func compressGzip(w io.Writer, payload []byte) error {
 		return err
 	}
 
-	if err := zw.Flush(); err != nil {
-		return err
-	}
-
-	if err := zw.Close(); err != nil {
-		return err
-	}
-	return nil
+	// flush後に閉じられる
+	// (w *huffmanBitWriter) flush() が内部で呼ばれる
+	return zw.Close()
 }
