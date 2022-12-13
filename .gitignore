@@ -3,3 +3,4 @@
 temp/*
 bin
 coverage.out
+*.sqlite
