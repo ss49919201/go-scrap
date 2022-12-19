@@ -14,7 +14,7 @@ require (
 	github.com/Code-Hex/dd v1.1.0
 	github.com/ahmetb/go-linq/v3 v3.2.0
 	github.com/aws/aws-lambda-go v1.34.1
-	github.com/bxcodec/faker/v3 v3.8.0
+	github.com/bxcodec/faker/v3 v3.8.1
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/go-playground/validator/v10 v10.11.0
@@ -30,7 +30,6 @@ require (
 	github.com/labstack/echo/v4 v4.9.1
 	github.com/labstack/gommon v0.4.0
 	github.com/ory/dockertest/v3 v3.9.1
-	github.com/rs/zerolog v1.28.0
 	github.com/samber/do v1.2.0
 	github.com/samber/lo v1.27.0
 	github.com/samber/mo v1.5.1
