@@ -2,7 +2,9 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"sync"
+	"time"
 
 	"github.com/graph-gophers/dataloader/v7"
 	lru "github.com/hashicorp/golang-lru"
@@ -26,8 +28,20 @@ func main() {
 
 	c, _ := lru.NewARC(100)
 	cache := NewUserCache(WithUserCache[int, *User](c))
-	loader := dataloader.NewBatchedLoader(fn, dataloader.WithCache[int, *User](cache))
+	loader := dataloader.NewBatchedLoader(
+		fn,
+		dataloader.WithCache[int, *User](cache),
+		dataloader.WithWait[int, *User](time.Second*2),
+	)
 
-	loader.Load(context.Background(), 1)()
-	loader.Load(context.Background(), 1)()
+	thunk := loader.Load(context.Background(), 1)
+
+	// この時点でキャッシュにいるはず
+	cachedThunk, _ := cache.Get(nil, 1)
+
+	fmt.Println(thunk())
+
+	// キャッシュされたクロージャーは更新されるのか？
+	// インメモリはいけてた
+	fmt.Println(cachedThunk())
 }

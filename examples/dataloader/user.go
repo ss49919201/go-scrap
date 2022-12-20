@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/go-redis/redis/v8"
 	"github.com/graph-gophers/dataloader/v7"
 	lru "github.com/hashicorp/golang-lru"
 )
@@ -55,6 +56,57 @@ func NewUserCache[K comparable, V any](opts ...UserCacheOption[K, V]) *userCache
 	return u
 }
 
+type userCacheWithRedis[K comparable, V any] struct {
+	*redis.Client
+}
+
+// Get gets an item from the cache
+func (c *userCacheWithRedis[K, V]) Get(ctx context.Context, key K) (dataloader.Thunk[V], bool) {
+	_, err := c.Client.Get(ctx, c.toString(key)).Result()
+	if err != nil {
+		return nil, false
+	}
+	return nil, false
+}
+
+// Set sets an item in the cache
+func (c *userCacheWithRedis[K, V]) Set(ctx context.Context, key K, value dataloader.Thunk[V]) {
+	// c.Client.Set(ctx, key, value.(any))
+}
+
+// Delete deletes an item in the cache
+func (c *userCacheWithRedis[K, V]) Delete(_ context.Context, key K) bool {
+	// if c.ARCCache.Contains(key) {
+	// 	c.ARCCache.Remove(key)
+	// 	return true
+	// }
+	return false
+}
+
+// Clear cleasrs the cache
+func (c *userCacheWithRedis[K, V]) Clear() {
+	// c.ARCCache.Purge()
+}
+
+func (_ *userCacheWithRedis[K, V]) toString(v any) string {
+	return v.(string)
+}
+
+func NewUserCacheWithRedis[K comparable, V any](opts ...UserCacheOption[K, V]) *userCache[K, V] {
+	u := &userCache[K, V]{}
+
+	for _, opt := range opts {
+		opt(u)
+	}
+
+	if u.ARCCache == nil {
+		c, _ := lru.NewARC(100)
+		u.ARCCache = c
+	}
+
+	return u
+}
+
 type UserCacheOption[K comparable, V any] func(*userCache[K, V])
 
 func WithUserCache[K comparable, V any](c *lru.ARCCache) UserCacheOption[K, V] {
@@ -77,7 +129,6 @@ type User struct {
 type UserRepo struct{}
 
 func (u *UserRepo) Find(id int) (*User, error) {
-	fmt.Println("UserRepo")
 	user, ok := userData[id]
 	if !ok {
 		return nil, fmt.Errorf("user not found")
