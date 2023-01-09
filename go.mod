@@ -30,8 +30,7 @@ require (
 	github.com/labstack/echo/v4 v4.9.1
 	github.com/labstack/gommon v0.4.0
 	github.com/ory/dockertest/v3 v3.9.1
-	github.com/rs/zerolog v1.28.0
-	github.com/samber/do v1.2.0
+	github.com/samber/do v1.5.1
 	github.com/samber/lo v1.27.0
 	github.com/samber/mo v1.5.1
 	golang.org/x/exp v0.0.0-20220827204233-334a2380cb91
