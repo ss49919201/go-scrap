@@ -2,7 +2,7 @@ version: "3"
 
 services:
   test:
-    image: golang:1.19.1-alpine
+    image: golang:1.19.5-alpine
     # TODO: キャッシュする
     volumes:
       - ~/.docker/config.json:/root/.docker/config.json:ro
