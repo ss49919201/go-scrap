@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"net"
 	"net/http"
 	"os"
@@ -11,13 +12,26 @@ import (
 	"strings"
 )
 
-func main() {
+var address string
+
+func init() {
 	wd, _ := os.Getwd()
-	listner, err := net.Listen("unix", path.Join(wd, "temp", "example"))
+	address = path.Join(wd, "temp", "example")
+	os.Remove(address)
+}
+
+func main() {
+	listner, err := net.Listen("unix", address)
 	if err != nil {
 		os.Stderr.WriteString(err.Error())
 		os.Exit(1)
 	}
+	defer func() {
+		err := os.Remove(address)
+		if err != nil {
+			log.Default().Println(err)
+		}
+	}()
 	defer listner.Close()
 	for {
 		conn, err := listner.Accept()
