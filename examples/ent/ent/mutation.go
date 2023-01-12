@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/go-tips/examples/ent/ent/predicate"
-	"github.com/go-tips/examples/ent/ent/user"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/predicate"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/user"
 
 	"entgo.io/ent"
 )

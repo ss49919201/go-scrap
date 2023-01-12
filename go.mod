@@ -1,4 +1,4 @@
-module github.com/go-tips
+module github.com/ss49919201/go-scrap
 
 go 1.19
 

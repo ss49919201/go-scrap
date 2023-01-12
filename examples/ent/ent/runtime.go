@@ -3,8 +3,8 @@
 package ent
 
 import (
-	"github.com/go-tips/examples/ent/ent/schema"
-	"github.com/go-tips/examples/ent/ent/user"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/schema"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/user"
 )
 
 // The init function reads all schema descriptors with runtime code

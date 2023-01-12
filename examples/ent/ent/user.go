@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"entgo.io/ent/dialect/sql"
-	"github.com/go-tips/examples/ent/ent/user"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/user"
 )
 
 // User is the model entity for the User schema.

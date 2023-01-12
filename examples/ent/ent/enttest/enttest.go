@@ -5,12 +5,12 @@ package enttest
 import (
 	"context"
 
-	"github.com/go-tips/examples/ent/ent"
+	"github.com/ss49919201/go-scrap/examples/ent/ent"
 	// required by schema hooks.
-	_ "github.com/go-tips/examples/ent/ent/runtime"
+	_ "github.com/ss49919201/go-scrap/examples/ent/ent/runtime"
 
 	"entgo.io/ent/dialect/sql/schema"
-	"github.com/go-tips/examples/ent/ent/migrate"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/migrate"
 )
 
 type (

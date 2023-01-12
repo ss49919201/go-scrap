@@ -9,7 +9,7 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/go-tips/examples/ent/ent/user"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/user"
 )
 
 // UserCreate is the builder for creating a User entity.

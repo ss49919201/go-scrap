@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/go-tips/examples/ent/ent"
 	_ "github.com/mattn/go-sqlite3"
+	"github.com/ss49919201/go-scrap/examples/ent/ent"
 )
 
 func main() {

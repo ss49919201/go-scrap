@@ -1,6 +1,6 @@
 package command
 
-import "github.com/go-tips/examples/transaction_script/model"
+import "github.com/ss49919201/go-scrap/examples/transaction_script/model"
 
 type CreateUserTS struct {
 	name string

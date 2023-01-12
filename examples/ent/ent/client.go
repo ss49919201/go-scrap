@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/go-tips/examples/ent/ent/migrate"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/migrate"
 
-	"github.com/go-tips/examples/ent/ent/user"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/user"
 
 	"entgo.io/ent/dialect"
 	"entgo.io/ent/dialect/sql"

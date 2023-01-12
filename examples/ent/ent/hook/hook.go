@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/go-tips/examples/ent/ent"
+	"github.com/ss49919201/go-scrap/examples/ent/ent"
 )
 
 // The UserFunc type is an adapter to allow the use of ordinary

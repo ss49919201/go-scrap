@@ -10,5 +10,5 @@ func main() {
 	fmt.Printf("%+v", xerrors.New("hello"))
 	// hello:
 	// main.main
-	//     /Users/sakaeshinya/workspace/go-tips/examples/xerrors/main.go:13%
+	//     /Users/sakaeshinya/workspace/go-scrap/examples/xerrors/main.go:13%
 }

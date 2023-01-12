@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/go-tips/examples/transaction_script/command"
-	"github.com/go-tips/examples/transaction_script/model"
-	"github.com/go-tips/examples/transaction_script/normal"
+	"github.com/ss49919201/go-scrap/examples/transaction_script/command"
+	"github.com/ss49919201/go-scrap/examples/transaction_script/model"
+	"github.com/ss49919201/go-scrap/examples/transaction_script/normal"
 )
 
 func main() {

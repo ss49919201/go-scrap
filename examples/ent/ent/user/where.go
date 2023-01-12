@@ -4,7 +4,7 @@ package user
 
 import (
 	"entgo.io/ent/dialect/sql"
-	"github.com/go-tips/examples/ent/ent/predicate"
+	"github.com/ss49919201/go-scrap/examples/ent/ent/predicate"
 )
 
 // ID filters vertices based on their ID field.

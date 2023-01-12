@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/go-tips/examples/aws_lambda/client"
-	"github.com/go-tips/examples/aws_lambda/handler"
+	"github.com/ss49919201/go-scrap/examples/aws_lambda/client"
+	"github.com/ss49919201/go-scrap/examples/aws_lambda/handler"
 )
 
 func main() {

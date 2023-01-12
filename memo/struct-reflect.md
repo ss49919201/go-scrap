@@ -67,7 +67,7 @@ elm: false
 skip!
 val: {sp main *string json:"sp" %!s(uintptr=32) [%!s(int=3)] %!s(bool=false)}
 🍙
-~/src/go-tips ● ▲ ■  go run main.go                                                                                          (git)-[master]
+~/src/go-scrap ● ▲ ■  go run main.go                                                                                          (git)-[master]
 
 --------------------
 name: S

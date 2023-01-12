@@ -3,7 +3,7 @@ package internal_test
 import (
 	"testing"
 
-	"github.com/go-tips/examples/linq_generic/internal"
+	"github.com/ss49919201/go-scrap/examples/linq_generic/internal"
 	"github.com/stretchr/testify/assert"
 )
 
