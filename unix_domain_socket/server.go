@@ -45,7 +45,7 @@ func main() {
 			os.Exit(1)
 		}
 		body, _ := io.ReadAll(req.Body)
-		os.Stdout.WriteString(fmt.Sprintf("read request: %v", string(body)))
+		os.Stdout.WriteString(fmt.Sprintf("read request: %v\n", string(body)))
 		(&http.Response{
 			StatusCode: http.StatusOK,
 			Body:       io.NopCloser(strings.NewReader("This is response")),
