@@ -11,5 +11,6 @@
 上記を繰り返すと、最悪(N-1) + (N-2) + ... + 1の計算量となり、(N^2-N)/2で表せる。
 係数を取るとN^2となる。
 
-e.g.) N = 6 => 5 + 4 + 3 + 2 + 1 = 15 => (6^2 - 6) / 2 = 15
+e.g. N = 6 => 5 + 4 + 3 + 2 + 1 = 15 => (6^2 - 6) / 2 = 15
+
 cf. https://judge.u-aizu.ac.jp/onlinejudge/commentary.jsp?id=ALDS1_2_A&pattern=post&type=general&filter=Algorithm#:~:text=%E3%83%90%E3%83%96%E3%83%AB%E3%82%BD%E3%83%BC%E3%83%88%E3%81%AE%E8%A8%88%E7%AE%97%E9%87%8F,2)%20%E3%81%AE%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82
