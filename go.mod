@@ -6,6 +6,7 @@ require (
 	github.com/Code-Hex/dd v1.1.0
 	github.com/k0kubun/pp v3.0.1+incompatible
 	github.com/stretchr/testify v1.8.1
+	go.mercari.io/go-bps v1.1.1
 )
 
 require (
