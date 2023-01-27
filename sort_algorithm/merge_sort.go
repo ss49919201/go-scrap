@@ -1,33 +1,31 @@
 package main
 
+import "sort"
+
 func merge(target []int) []int {
 	half := len(target) / 2
 	if half == 0 {
 		return target
 	}
+
 	a := merge(target[:half])
 	b := merge(target[half:])
-	sorted := make([]int, 0, len(target))
-	for {
-		if len(a) == 0 && len(b) == 0 {
-			break
-		}
 
-		if len(a) == 0 {
-			sorted = append(sorted, b[0])
-			b = b[1:]
-		} else if len(b) == 0 {
-			sorted = append(sorted, a[0])
-			a = a[1:]
+	tmpSlice := make([]int, 0, len(target))
+	tmpSlice = append(tmpSlice, a...)
+	sort.Sort(sort.Reverse(sort.IntSlice(b)))
+	tmpSlice = append(tmpSlice, b...)
+
+	begin := 0
+	end := len(tmpSlice) - 1
+	for i := 0; i < len(tmpSlice); i++ {
+		if tmpSlice[begin] < tmpSlice[end] {
+			target[i] = tmpSlice[begin]
+			begin++
 		} else {
-			if a[0] > b[0] {
-				sorted = append(sorted, b[0])
-				b = b[1:]
-			} else {
-				sorted = append(sorted, a[0])
-				a = a[1:]
-			}
+			target[i] = tmpSlice[end]
+			end--
 		}
 	}
-	return sorted
+	return target
 }
