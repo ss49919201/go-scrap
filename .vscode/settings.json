@@ -1,0 +1,11 @@
+{
+    "gopls": {
+        "buildFlags": [
+            "-tags=tags"
+        ]
+    },
+    "go.testFlags": [
+        "-v"
+    ],
+    "go.testTags": "tags",
+}
