@@ -1,10 +1,14 @@
 package main
 
 func linear(target []int, want int) int {
-	for i := 0; i < len(target); i++ {
-		if target[i] == want {
-			return target[i]
-		}
+	size := len(target)
+	target = append(target, want)
+	i := 0
+	for target[i] != want {
+		i++
 	}
-	return -1
+	if i == size {
+		return -1
+	}
+	return want
 }
