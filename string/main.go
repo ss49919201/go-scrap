@@ -11,6 +11,8 @@ func main() {
 		sb.WriteString(string(v))
 	}
 	fmt.Println(sb.String()) // あいうえお💫
+
+	fmt.Println(toString([]rune{1000, 2000, 3000})) // Ϩߐஸ
 }
 
 func toRuneSlice(s string) []rune {
@@ -19,4 +21,8 @@ func toRuneSlice(s string) []rune {
 		result = append(result, v)
 	}
 	return result
+}
+
+func toString(rs []rune) string {
+	return string(rs)
 }
