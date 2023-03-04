@@ -19,7 +19,7 @@ func solve() {
 		zahyouY := a * a
 
 		// 接線の方程式を求める
-		katamuki := 2.0 * zahyouX            // 傾き
+		katamuki := 2.0 * zahyouX            // 微分の公式から傾きが求められる
 		seppen := zahyouY - katamuki*zahyouX // 切片
 		// 求めた接線の方程式のyにrを代入することで、y=rとの交点のx座標を求める
 		a = (r - seppen) / katamuki
