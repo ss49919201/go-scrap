@@ -3,9 +3,10 @@ package infra
 import (
 	"database/sql"
 	"time"
+	tablerowgateway "todo-app/table_row_gateway"
 )
 
-type TaskRowGateway struct {
+type taskRowGateway struct {
 	ID          int
 	Name        string
 	Description string
@@ -14,18 +15,13 @@ type TaskRowGateway struct {
 	UpdatedAt   time.Time
 }
 
-func (t *TaskRowGateway) Insert() error
+func (t *taskRowGateway) Insert() error
 
-func (t *TaskRowGateway) Update() error
+func (t *taskRowGateway) Update() error
 
-func (t *TaskRowGateway) Delete() error
+func (t *taskRowGateway) Delete() error
 
-type TaskFinder interface {
-	First(id int) (*TaskRowGateway, error)
-	FindByUserID(userID int) ([]*TaskRowGateway, error)
-}
-
-func NewTaskFinder(db *sql.DB) TaskFinder {
+func NewTaskFinder(db *sql.DB) tablerowgateway.TaskFinder {
 	return &taskFinder{db}
 }
 
@@ -33,6 +29,6 @@ type taskFinder struct {
 	*sql.DB
 }
 
-func (t *taskFinder) First(id int) (*TaskRowGateway, error)
+func (t *taskFinder) First(id int) (tablerowgateway.TaskRowGateway, error)
 
-func (t *taskFinder) FindByUserID(userID int) ([]*TaskRowGateway, error)
+func (t *taskFinder) FindByUserID(userID int) ([]tablerowgateway.TaskRowGateway, error)
