@@ -8,8 +8,6 @@ import (
 	"golang.org/x/exp/slog"
 )
 
-func main() {}
-
 var defaultLogger = slog.New(
 	slog.NewJSONHandler(os.Stdout),
 )
