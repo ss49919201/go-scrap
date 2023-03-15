@@ -4,7 +4,9 @@ go 1.19
 
 require (
 	github.com/Code-Hex/dd v1.1.0
-	github.com/aws/aws-sdk-go v1.44.218
+	github.com/aws/aws-sdk-go-v2 v1.17.6
+	github.com/aws/aws-sdk-go-v2/config v1.18.16
+	github.com/aws/aws-sdk-go-v2/service/lambda v1.30.1
 	github.com/k0kubun/pp v3.0.1+incompatible
 	github.com/mmcdole/gofeed v1.1.3
 	github.com/samber/lo v1.37.0
@@ -15,21 +17,17 @@ require (
 require (
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
 	github.com/andybalholm/cascadia v1.1.0 // indirect
-	github.com/aws/aws-sdk-go-v2 v1.17.6 // indirect
-	github.com/aws/aws-sdk-go-v2/config v1.18.16 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.13.16 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.12.24 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.30 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.24 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.3.31 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.9.24 // indirect
-	github.com/aws/aws-sdk-go-v2/service/lambda v1.30.1 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sso v1.12.5 // indirect
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.14.5 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.18.6 // indirect
 	github.com/aws/smithy-go v1.13.5 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/google/go-cmp v0.5.8 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
