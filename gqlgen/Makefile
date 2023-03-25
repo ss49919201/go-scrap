@@ -1,3 +1,0 @@
-.PHONY: gqlgen
-gqlgen:
-	go generate ./...
