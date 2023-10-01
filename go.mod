@@ -1,6 +1,6 @@
 module github.com/ss49919201/go-scrap
 
-go 1.19
+go 1.21.0
 
 require (
 	github.com/Code-Hex/dd v1.1.0
@@ -12,11 +12,12 @@ require (
 	github.com/samber/lo v1.37.0
 	github.com/simukti/sqldb-logger v0.0.0-20230108155151-646c1a075551
 	github.com/simukti/sqldb-logger/logadapter/zerologadapter v0.0.0-20230108155151-646c1a075551
+	github.com/ss49919201/example-root v0.0.1
+	github.com/ss49919201/example-sub v0.0.3
 	github.com/stretchr/testify v1.8.1
 	github.com/thoas/go-funk v0.9.3
 	go.mercari.io/go-bps v1.1.1
 	golang.org/x/exp v0.0.0-20230321023759-10a507213a29
-	gopkg.in/yaml.v2 v2.2.2
 )
 
 require (
