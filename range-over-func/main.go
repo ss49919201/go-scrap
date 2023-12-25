@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"iter"
+)
 
 func rangeOverFnA(yield func(i int, v string) bool) {
 	b := yield(0, "0")
@@ -53,4 +56,34 @@ func c() {
 	}
 }
 
-func main() {}
+func example[T any](seq iter.Seq[T]) {
+	for i := range seq {
+		fmt.Println(i)
+	}
+}
+
+func example2[K, V any](seq iter.Seq2[K, V]) {
+	for k, v := range seq {
+		fmt.Println(k, v)
+	}
+}
+
+func main() {
+	example(func(yield func(int) bool) {
+		if !yield(1) {
+			return
+		}
+		if !yield(2) {
+			return
+		}
+	})
+
+	example2(func(yield func(int, string) bool) {
+		if !yield(1, "1") {
+			return
+		}
+		if !yield(2, "2") {
+			return
+		}
+	})
+}
